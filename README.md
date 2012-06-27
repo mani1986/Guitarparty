@@ -20,7 +20,7 @@ To authenticate your requests you have to insert your api in the first parameter
 Usage
 ------------
 
-Get Single Song and display the cords
+Get Single Song and display the cords songId = 5
 
 	<?php
 		$song = $guitarParty->getSong(5);
