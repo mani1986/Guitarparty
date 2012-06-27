@@ -22,20 +22,19 @@ Usage
 
 Get Single Song and display the cords songId = 5
 
-	<?php
-		$song = $guitarParty->getSong(5);
-		echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
-		echo '<p>'.$song->body.'</p>';
+	$song = $guitarParty->getSong(5);
+	echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
+	echo '<p>'.$song->body.'</p>';
 
-		echo '<table>';
-		echo '<tr>';
-		foreach ($song->chords as $chord)
-		{
-			echo '<td><img src="'.$chord->image_url.'"></td>';
-		}
-		echo '</tr>';
-		echo '</table>';
-		echo '<hr>';
-	?>
+	echo '<table>';
+	echo '<tr>';
+	foreach ($song->chords as $chord)
+	{
+		echo '<td><img src="'.$chord->image_url.'"></td>';
+	}
+	echo '</tr>';
+	echo '</table>';
+	echo '<hr>';
+
 
 More detailed information about the API can be found on the [Guitarparty.com website](http://www.guitarparty.com/developers/api-docs/) 
