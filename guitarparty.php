@@ -4,37 +4,60 @@
 // Version: 0.1 
 // Date: 27.6.2012
 
+require_once('lib/request.php');
+require_once('lib/songs.php');
+require_once('lib/songbooks.php');
+require_once('lib/artists.php');
 
-/* Config */
+class Guitarparty
+{
+	private $apiKey;
+	private $apiUri = 'http://api.guitarparty.com/';
+	private $apiEndpoint = 'v2/';
+	
+	public function __construct($apiKey)
+	{
+		$this->apiKey = $apiKey;
+		define('API_KEY', $apiKey);
+		define('URL', $this->apiUri.$this->apiEndpoint);
+	}
+		
+	public function getSong($songId)
+	{
+		$song = Guitarparty_request::makeRequest('songs/'.$songId.'/');
+		return $song;
+	}
+	
+	public function searchSongs($searchString)
+	{
+		$songs = Guitarparty_request::makeRequest('songs/?query='.$searchString);
+		return $songs;
+	}
+	
+	public function getArtist($artistId)
+	{
+		$artist = Guitarparty_request::makeRequest('artists/'.$artistId.'/');
+		return $artist;
+	}
+};
 
-$api_key = 'a5a569576ca8c3fae22d221aa9b4a09d64d97e25';
-//$url = 'http://api.guitarparty.com/v2/songbooks/';
-$url = 'http://www.mbl.is';
-/*
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL,$url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS,
-            "API_KEY=$api_key");
 
-// receive server response ...
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-$server_output = curl_exec($ch);
 
-curl_close($ch);
 
-// further processing ....
-echo $server_output;
-*/
+function requireDependencies() {
+	if (version_compare(PHP_VERSION, '5.2.1', '<'))
+	{
+		throw new exception('PHP version >= 5.2.1 required');
+	}
+    if (!extension_loaded('curl'))
+	{
+		throw new exception('The Guitarparty library requires the curl extension.');
+    }
 
-//$header = array('Content-Type: application/json', 'Guitarparty-Api-Key=a5a569576ca8c3fae22d221aa9b4a09d64d97e25');
-//$header = '';
-$curl = curl_init($url);
-curl_setopt($curl, CURLOPT_URL, $url);
-//curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
-$xml = curl_exec($curl);
-curl_close($curl);
+}
 
-print $xml;
+requireDependencies();
+
+
 ?>
