@@ -35,6 +35,10 @@ Get Single Song and display the cords, songId = 5
 	}
 	echo '</tr>';
 	echo '</table>';
+Outputs: 
+	Jolene - Dolly Parton
+	...
+	
 	
 
 Search for Songs, searchString = 'Jolene'
@@ -54,6 +58,12 @@ Search for Songs, searchString = 'Jolene'
 		echo '</tr>';
 		echo '</table>';
 	}
+Outputs:
+	Outputs: 
+	Jolene - Dolly Parton
+	...
+	Jolene - Ray Lamontagne
+	...
 
 
 More detailed information about the API can be found on the [Guitarparty.com website](http://www.guitarparty.com/developers/api-docs/) 
