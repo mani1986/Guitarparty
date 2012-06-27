@@ -34,7 +34,6 @@ Get Single Song and display the cords songId = 5
 	}
 	echo '</tr>';
 	echo '</table>';
-	echo '<hr>';
 
 
 More detailed information about the API can be found on the [Guitarparty.com website](http://www.guitarparty.com/developers/api-docs/) 
