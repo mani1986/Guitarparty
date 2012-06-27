@@ -21,7 +21,7 @@ To authenticate your requests you have to insert your api in the first parameter
 Usage
 ------------
 
-[Get Single Song and display the cords, songId = 5]
+[b]Get Single Song and display the cords, songId = 5[/b]
 
 	$song = $guitarParty->getSong(5);
 	echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
