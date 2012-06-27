@@ -36,6 +36,7 @@ Get Single Song and display the cords, songId = 5
 	echo '</tr>';
 	echo '</table>';
 Outputs: 
+
 	Jolene - Dolly Parton
 	...
 	
@@ -59,6 +60,7 @@ Search for Songs, searchString = 'Jolene'
 		echo '</table>';
 	}
 Outputs:
+
 	Outputs: 
 	Jolene - Dolly Parton
 	...
