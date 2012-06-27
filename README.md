@@ -14,13 +14,14 @@ You need to obtain your API key from [Guitarparty.com](http://www.guitarparty.co
 
 To authenticate your requests you have to insert your api in the first parameter when initializing the Guitarparty class
 
+    require_once('guitarparty.php');
     $apiKey = 'your-guitarparty-apikey';
-	$guitarParty = new Guitarparty($apiKey);
+    $guitarParty = new Guitarparty($apiKey);
 
 Usage
 ------------
 
-Get Single Song and display the cords songId = 5
+Get Single Song and display the cords, songId = 5
 
 	$song = $guitarParty->getSong(5);
 	echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
@@ -34,6 +35,25 @@ Get Single Song and display the cords songId = 5
 	}
 	echo '</tr>';
 	echo '</table>';
+	
+
+Search for Songs, searchString = 'Jolene'
+
+	$songs = $guitarParty->searchSongs('Jolene');
+	foreach($songs->objects as $song)
+	{
+		echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
+		echo '<p>'.$song->body.'</p>';
+
+		echo '<table>';
+		echo '<tr>';
+		foreach ($song->chords as $chord)
+		{
+			echo '<td><img src="'.$chord->image_url.'"></td>';
+		}
+		echo '</tr>';
+		echo '</table>';
+	}
 
 
 More detailed information about the API can be found on the [Guitarparty.com website](http://www.guitarparty.com/developers/api-docs/) 
