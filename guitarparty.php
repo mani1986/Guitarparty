@@ -15,6 +15,19 @@ class Guitarparty
 	private $apiUri = 'http://api.guitarparty.com/';
 	private $apiEndpoint = 'v2/';
 	
+	
+	public function makeRequest($endpoint)
+	{
+		$endpoint = URL.$endpoint;
+		$header = array('Guitarparty-Api-Key: '.API_KEY.'');
+		$curl = curl_init($endpoint);
+		curl_setopt($curl, CURLOPT_HTTPHEADER, $header);
+		curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+		$json = curl_exec($curl);
+		curl_close($curl);
+		return json_decode($json);
+	}
+	
 	public function __construct($apiKey)
 	{
 		$this->apiKey = $apiKey;
@@ -24,19 +37,19 @@ class Guitarparty
 		
 	public function getSong($songId)
 	{
-		$song = Guitarparty_request::makeRequest('songs/'.$songId.'/');
+		$song = $this->makeRequest('songs/'.$songId.'/');
 		return $song;
 	}
 	
 	public function searchSongs($searchString)
 	{
-		$songs = Guitarparty_request::makeRequest('songs/?query='.$searchString);
+		$songs = $this->makeRequest('songs/?query='.$searchString);
 		return $songs;
 	}
 	
 	public function getArtist($artistId)
 	{
-		$artist = Guitarparty_request::makeRequest('artists/'.$artistId.'/');
+		$artist = $this->makeRequest('artists/'.$artistId.'/');
 		return $artist;
 	}
 };
