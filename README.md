@@ -21,7 +21,7 @@ To authenticate your requests you have to insert your api in the first parameter
 Usage
 ------------
 
-[b]Get Single Song and display the cords, songId = 5[/b]
+Get Single Song and display the cords, songId = 5
 
 	$song = $guitarParty->getSong(5);
 	echo '<h3>'.$song->title.' - '.$song->authors[0]->name.'</h3>';
@@ -61,11 +61,29 @@ Search for Songs, searchString = 'Jolene'
 	}
 Outputs:
 
-	Outputs: 
 	Jolene - Dolly Parton
 	...
 	Jolene - Ray Lamontagne
 	...
+	
+Get Single Artist, artistId = 1
 
+	$artist = $guitarParty->getArtist(1);
+    	echo $artist->name;
+Outputs:
+
+	Dolly Parton
+	
+Search for Songs, searchString = 'Dolly Parton'
+
+	$artists = $guitarParty->searchArtists('Dolly Parton');
+	foreach($artists->objects as $artist)
+	{
+		echo $artist->name.'<br/>';
+	}
+Outputs:
+
+	Dolly Parton
+  
 
 More detailed information about the API can be found on the [Guitarparty.com website](http://www.guitarparty.com/developers/api-docs/) 
