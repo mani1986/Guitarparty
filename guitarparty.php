@@ -4,11 +4,6 @@
 // Version: 0.1 
 // Date: 27.6.2012
 
-require_once('lib/request.php');
-require_once('lib/songs.php');
-require_once('lib/songbooks.php');
-require_once('lib/artists.php');
-
 class Guitarparty
 {
 	private $apiKey;
@@ -86,9 +81,9 @@ class Guitarparty
 		return $songbooks;
 	}
 	
-	public function createSongbook($title, $description)
+	public function createSongbook($title, $description = null, $isPublic = False)
 	{
-		$data = array('title' => $title, 'description' => $description);
+		$data = array('title' => $title, 'description' => $description, 'is_public' => $isPublic);
 		$songbook = $this->makeRequest('songbooks', 2, json_encode($data));
 		return $songbook;
 	}
